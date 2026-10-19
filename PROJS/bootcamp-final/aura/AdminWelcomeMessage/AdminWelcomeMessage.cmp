@@ -1,0 +1,23 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <lightning:card iconName="standard:agent_home" title="Welcome!" class="slds-p-around_small">
+        <h1>
+            Hello App Admin for Carshop App!
+        </h1>
+        <p>
+            Allow me to let you know what you can do as Admin.
+            You have all the access to source code, full access to tabs as well and off course the full editing of Carshop custom objects.
+        </p>
+        <p>
+            Let's start by taking a look to some components that your users will have.
+        </p>
+        <ul>
+            <li>Click the gear</li>
+            <li>Select "Edit Page"</li>
+            <li>Checkout the awesome components we have for you!</li>
+        </ul>
+        <p>
+            Well, that should do it for now, <b>enjoy this app!</b>
+        </p>
+        <img src="https://raw.githubusercontent.com/joseriosdev/git-practice/main/carshop-logo.png" alt="Carshop Logo" />
+    </lightning:card>
+</aura:component>

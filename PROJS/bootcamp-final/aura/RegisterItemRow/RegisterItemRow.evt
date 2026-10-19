@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Event template" >
+	<aura:attribute name="selectedItemsTop10" type="Object" access="GLOBAL" default="[]"/>
+</aura:event>

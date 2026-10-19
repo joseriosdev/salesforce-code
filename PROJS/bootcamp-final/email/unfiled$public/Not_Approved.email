@@ -1,0 +1,6 @@
+Dear {!Order__c.Buyer_Name__c},
+
+Unfortunately, your recent Order ({!Order__c.Name}) request has been not approved.
+
+Best,
+Carshop team.

@@ -1,0 +1,27 @@
+.THIS div.slds-truncate {
+    width: 100%;
+    text-align: center;
+}
+
+.THIS .form {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    padding-bottom: .5rem;
+}
+
+.THIS .pagination {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}.THIS .pagination * {
+    margin: 0 .5rem;
+}
+
+.THIS .sum-and-rest-btns button {
+    width: 0px !important;
+    height: 20px !important;
+    border-radius: 8px !important;
+}

@@ -1,0 +1,11 @@
+Dear {!Order__c.Buyer_Name__c},
+
+Good news! Your recent order request has been approved. Here are the details.
+
+Order: {!Order__c.Name}
+Phone: {!Order__c.Buyer_Phone__c}
+Shipping Address: {!Order__c.Buyer_Address__c}
+Cost: {!Order__c.Total_Price__c}
+
+Best,
+Carshop team.

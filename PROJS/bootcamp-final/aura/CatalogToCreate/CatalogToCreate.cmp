@@ -1,0 +1,30 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="CatalogToCreateController">
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="test" type="String"/>
+    <aura:attribute name="catalogName" type="String"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <aura:handler event="c:RegisterItemRow" action="{!c.handlePopulateCatalog}" />
+    
+    <!--Display new stock items-->
+    <lightning:card iconName="utility:side_list" title="Catalog to Create" class="slds-p-around_x-small">
+        <!-- Name input -->
+        <form class="form">
+            <lightning:input label="Catalog Name"
+                             value="{!v.catalogName}"
+                             required="true"
+                             placeholder = "E.g. Spring 2021"/>
+            <div class="slds-m-around_small slds-border_top slds-border_right slds-border_bottom slds-border_left">
+                <lightning:datatable data="{! v.mydata }"
+                                    columns="{! v.mycolumns }"
+                                    keyField="Id"
+                                    hideCheckboxColumn="true"/>
+            </div>
+            <lightning:button label="Create Catalog"
+                              variant="brand"
+                              title="Create Catalog"
+                              onclick="{!c.createCatalog}"/>
+        </form>
+    </lightning:card>   
+</aura:component>

@@ -1,0 +1,19 @@
+.THIS .footer {
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    max-width: 80%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.THIS .total-price {
+    padding: .5rem 1rem;
+    margin-top: 1rem;
+    max-width: 100px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: #45c65a;
+    border-radius: 7px;
+}

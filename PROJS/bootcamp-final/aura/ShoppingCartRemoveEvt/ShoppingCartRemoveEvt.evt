@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" description="Fired when removing an item from cart" >
+    <aura:attribute name="itemToRemove" type="Object"/>
+    <aura:attribute name="row" type="Object"/>
+    <aura:attribute name="clearAll" type="Boolean"/>
+</aura:event>

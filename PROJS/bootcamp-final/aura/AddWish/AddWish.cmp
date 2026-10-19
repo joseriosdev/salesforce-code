@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes" access="global">
+    
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:attribute name="addwishfields" type="String[]" default="Name,Manufacturer__c,Car_Brand__c"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <aura:handler name="onSaveSuccess"  event="force:recordUpdated" action="{!c.saveSuccessHandle}"/>
+    <lightning:card iconName="custom:custom31" title="Add Item to My Wish List">
+        <div class="slds-p-left_large slds-p-right_medium">
+            <lightning:recordForm aura:id="WishedItemForm"
+                                  
+                                  objectApiName="Wished_Item__c"
+                                  fields="{!v.addwishfields}"
+                                  columns="2"
+                                  onsuccess="{!c.saveSuccessHandle}"
+                                  />
+        </div>
+    </lightning:card>
+    
+</aura:component>

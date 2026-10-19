@@ -1,0 +1,82 @@
+<aura:component implements="flexipage:availableForRecordHome,
+                force:hasRecordId,
+                force:appHostable,
+                flexipage:availableForAllPageTypes" access="global" controller="WishListController">
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="loading" type="Boolean" default="false" />
+    <aura:attribute name="isOpen" type="Boolean" default="false" />
+    <aura:attribute name="requested" type="Boolean" default="false" />
+    <aura:attribute name="title" type="String" default="Title" />
+    <aura:attribute name="wishedItemId" type="String" />
+    <aura:attribute name="data" type="List" />
+    <aura:attribute name="columns" type="List" default="[]" />
+    <aura:attribute name="error" type="String" default="" />
+
+    <!-- COMPONENT -->
+    <lightning:card class="slds-var-p-around_xxx-small" title="{!v.title}" iconName="standard:contract_line_item">
+        <aura:if isTrue="{!v.loading}">
+            <lightning:spinner alternativeText="Loading..." />
+        </aura:if>
+        <div class="slds-m-around_small slds-border_top slds-border_right slds-border_bottom slds-border_left">
+            <lightning:datatable aura:id="itemsTable" keyField="Id" data="{!v.data}" columns="{!v.columns}"
+                hideCheckboxColumn="true" onrowaction="{! c.handleRowAction }" />
+            <aura:if isTrue="{! !empty(v.error) }">
+                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert">
+                    <span class="slds-assistive-text">warning</span>
+                    <lightning:icon iconName="utility:warning" />
+                    <h2>{! v.error }</h2>
+                </div>
+            </aura:if>
+        </div>
+    </lightning:card>
+
+    <!-- MODAL -->
+    <aura:if isTrue="{!v.isOpen}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Create a new request</h2>
+                </header>
+                <lightning:recordEditForm objectApiName="Wished_Item__c" recordId="{! v.wishedItemId }"
+                    onsuccess="{! c.handleSuccess }">
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning:messages />
+                        <lightning:outputField fieldName="Name" />
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Car_Brand__c" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:outputField fieldName="Manufacturer__c" />
+                            </div>
+                        </div>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:inputField fieldName="Price__c" required="true" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:inputField fieldName="Type__c" required="true" />
+                            </div>
+                        </div>
+                        <div class="slds-box slds-box_xx-small">
+                            <lightning:inputField fieldName="Notify__c" />
+                            <div class="slds-text-title">Notify by email to all buyers that have a wish list including this Wished Item.</div>        
+                        </div>
+                    </div>
+                    <footer class="slds-modal__footer slds-modal__footer_directional">
+                        <button class="slds-button slds-button_neutral" onclick="{! c.closeModal }">Cancel</button>
+                        <lightning:button class="slds-button slds-button_brand" type="submit" label="Send"
+                            disabled="{! v.requested }" />
+                    </footer>
+                </lightning:recordEditForm>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+
+</aura:component>

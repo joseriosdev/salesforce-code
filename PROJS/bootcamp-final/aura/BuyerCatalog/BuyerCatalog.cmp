@@ -1,0 +1,17 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="BuyerCatalogController">
+	<aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="catalog" type="Object"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <!--Display Catalog -->
+    <lightning:card iconName="utility:side_list" title="{!v.catalog.Name + ' Catalog'}" class="slds-p-around_x-small">
+        <div class="slds-m-around_small slds-border_top slds-border_right slds-border_bottom slds-border_left">
+            <lightning:datatable data="{! v.mydata }"
+                                 columns="{! v.mycolumns }"
+                                 keyField="Id"
+                                 hideCheckboxColumn="true"/>
+        </div>
+    </lightning:card>
+    
+</aura:component>

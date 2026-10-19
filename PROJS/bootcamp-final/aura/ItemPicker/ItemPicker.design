@@ -1,0 +1,3 @@
+<design:component>
+	<design:attribute name="queryLim" label="Number of Rows" min="1" max="20" description="How many rows do you want to see in the table? min(1) max(20)" />
+</design:component>

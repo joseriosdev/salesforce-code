@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="MyWishListController">
+    
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <!--Display Wish List -->
+    <lightning:card iconName="utility:locker_service_api_viewer" title="My Wish List">
+        <lightning:datatable data="{! v.mydata }"
+                             columns="{! v.mycolumns }"
+                             keyField="Id"
+                             hideCheckboxColumn="true"/>
+    </lightning:card>
+	
+</aura:component>

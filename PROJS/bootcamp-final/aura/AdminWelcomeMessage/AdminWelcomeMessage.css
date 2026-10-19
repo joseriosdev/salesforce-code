@@ -1,0 +1,23 @@
+.THIS h1 {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.THIS p {
+    font-size:1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.THIS ul {
+    margin:1rem 0 2rem 2rem;
+    padding-left: .5rem;
+    list-style: circle;
+    font-size:1.2rem;
+}
+
+.THIS img {
+    display: block;
+    margin: 0 auto;
+}

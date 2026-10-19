@@ -1,0 +1,4 @@
+<design:component >
+    <design:attribute name="tableTitle" label="Title"/>
+    <design:attribute name="limit" label="Amount of table rows to display"/>
+</design:component>

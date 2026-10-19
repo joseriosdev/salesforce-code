@@ -1,0 +1,71 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes"
+                access="global"
+                controller="ItemPickerController">
+    
+    <aura:attribute name="title" type="String" default="Our Products" />
+    <aura:attribute name="isLoading" type="Boolean" />
+    <!-- Form Variable -->
+    <aura:attribute name="inputSearch" type="String" default="" />
+    <aura:attribute name="inputType" type="String" default="All" />
+    <aura:attribute name="itemTypes" type="String[]" default="All,Spare,Accessory"/>
+    <!-- Table Variables -->
+    <aura:attribute name="tableData" type="Object" />
+    <aura:attribute name="tableCols" type="Object" />
+    <!-- Pagination Varibales -->
+	<aura:attribute name="finalPag" type="Integer" />
+    <aura:attribute name="currentPag" type="Integer" default="1" />
+    <aura:attribute name="queryLim" type="Integer" default="10" />
+    <aura:attribute name="queryOff" type="Integer" default="0" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:registerEvent name="fillCart" type="c:PopulateShoppingCartEvt"/>
+    <aura:handler event="c:ShoppingCartRemoveEvt" action="{!c.handleRemoveItemFromCart}" />
+    
+    <lightning:card title="{!v.title}"
+                    iconName="custom:custom11"
+                    class="slds-p-around_x-small">
+        <!-- Search Area -->
+        <form class="form">
+            <lightning:input label="I'm looking for..."
+                             value="{!v.inputSearch}"/>
+            
+            <lightning:select name="inputType" label="Type" value="{!v.inputType}">
+                <aura:iteration items="{!v.itemTypes}" var="type">
+                	<option text="{!type}"></option>
+                </aura:iteration>
+            </lightning:select>
+            
+            <lightning:button label="Go!"
+                              variant="brand"
+                              title="Search"
+                              onclick="{!c.getItems}"/>
+        </form>
+        
+        <!-- Table Area -->
+        <section class="slds-m-around_small slds-border_top slds-border_right slds-border_bottom slds-border_left">
+            <aura:if isTrue="{!v.isLoading}">
+                <lightning:spinner alternativeText="Loading..." />
+            </aura:if>
+            <div id="itemsTableContainer">
+                <lightning:datatable aura:id="itemsTable"
+                                     keyField="ItemId"
+                                     data="{!v.tableData}"
+                                     columns="{!v.tableCols}"
+                                     hideCheckboxColumn="true"
+                                     onrowaction="{!c.handleRowAction}"/>
+            </div>
+        </section>
+        
+        <!-- Pagination Area -->
+        <footer class="pagination">
+            <lightning:button label="Previous"
+                              title="Previous"
+                              onclick="{!c.handlePrev}"
+                              class="slds-m-left_small" />
+            Page {!v.currentPag} - {!v.finalPag}
+            <lightning:button label="Next"
+                              title="Next"
+                              onclick="{!c.handleNext}" />
+        </footer>
+    </lightning:card>
+</aura:component>

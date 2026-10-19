@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Pending</fullName>
+        <default>true</default>
+        <label>Pending</label>
+    </customValue>
+    <customValue>
+        <fullName>Requested</fullName>
+        <default>false</default>
+        <label>Requested</label>
+    </customValue>
+    <customValue>
+        <fullName>Approved</fullName>
+        <default>false</default>
+        <label>Approved</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Approved</fullName>
+        <default>false</default>
+        <label>Not Approved</label>
+    </customValue>
+    <masterLabel>Wished Item Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

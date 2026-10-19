@@ -1,0 +1,37 @@
+<aura:component implements="flexipage:availableForRecordHome,
+                force:hasRecordId,
+                force:appHostable,
+                flexipage:availableForAllPageTypes" access="global" controller="ItemsPerCarBrandController">
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <aura:attribute name="isLoading" type="Boolean" default="false" />
+    <aura:attribute name="tableTitle" type="String" default="Title" />
+    <aura:attribute name="tableData" type="Object" />
+    <aura:attribute name="tableOptions" type="List" default="[]" />
+    <aura:attribute name="tableCols" type="List" default="[]" />
+    <aura:attribute name="tableCarBrand" type="String" default="" />
+    
+    <!-- Pagination attrs -->
+    <aura:attribute name="offset" type="Integer" default="0" />
+    <aura:attribute name="index" type="Integer" default="0" />
+    <aura:attribute name="limit" type="Integer" default="10" description="Amount of table rows to display" />
+    <aura:attribute name="total" type="Integer" default="1" />
+    <!-- /Pagination attrs -->
+
+    <lightning:card class="slds-var-p-around_xxx-small" title="{!v.tableTitle}" iconName="standard:dataset">
+        <aura:if isTrue="{!v.isLoading}">
+            <lightning:spinner alternativeText="Loading..." />
+        </aura:if>
+        <lightning:combobox label="Car Brand" placeholder="Select Car Brand" options="{! v.tableOptions }"
+            onchange="{! c.handleChange }" class="slds-m-horizontal_small" />
+        <div class="slds-m-around_small slds-border_top slds-border_right slds-border_bottom slds-border_left">
+            <lightning:datatable aura:id="itemsTable" keyField="Id" data="{!v.tableData}" columns="{!v.tableCols}"
+                hideCheckboxColumn="true" />
+        </div>
+        <lightning:button label="Previous" title="Previous" onclick="{!c.handlePrevious}" class="slds-m-left_small" />
+        Page {!v.index + 1} - {!v.total}
+        <lightning:button label="Next" title="Next" onclick="{!c.handleNext}" />
+    </lightning:card>
+
+</aura:component>
