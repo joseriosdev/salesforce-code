@@ -1,0 +1,50 @@
+<apex:component >
+    <!-- FILTER ATTR -->
+    <apex:attribute type="string" name="inputWords" description="Input that came from user"  />
+    <apex:attribute type="list" name="typesList" description="Available list so user can pick one" />
+    <apex:attribute type="string" name="type" description="Single picked value from user"  />
+    <apex:attribute type="ApexPages.Action" name="search" description="The action to be executed for the search" />
+    <apex:attribute type="Boolean" name="autoDisplay" description="Use id to display or not the filter, helpful for interactivity" />
+    <!-- AUX BTN ATTR -->
+    <apex:attribute type="ApexPages.Action" name="auxBtnAction" description="The action to be executed for auxiliar button" />
+    <apex:attribute type="String" name="auxBtnValue" description="The value to be displayed for the auxiliar button" />
+    <apex:attribute type="Boolean" name="auxBtnDisplay" description="Render or not the auxiliar button" />
+    
+    
+    <style>
+    	.searcher-form-container {
+        	width: 100%;
+        	display: flex;
+        	justify-content: space-between;
+        	margin: .5rem 0 1rem;
+        	padding: .5rem 0;
+        }
+        
+        .searcher-form-container .filter {
+        	width: 50%;
+        	display: flex;
+        	justify-content: space-between;
+        	align-items: center;
+        }
+        
+        .aux-btn-container {
+        	margin-left: auto !important;
+        	margin-right: 1rem !important;
+        }
+    </style>
+    
+    <apex:form styleClass="searcher-form-container" rendered="{!autoDisplay}">
+        <div class="filter">
+            <div class="input-wrapper">
+                <apex:inputText value="{!inputWords}" styleClass="rounded-input" />
+            </div>
+            <div class="input-wrapper">
+                <apex:commandButton value="{!$Label.buscar}" action="{!search}" styleClass="blue-btn" />
+            </div>
+        </div>
+        
+        <apex:outputPanel styleClass="aux-btn-container" rendered="{!auxBtnDisplay}">
+            <apex:commandButton value="{!auxBtnValue}" action="{!auxBtnAction}" styleClass="blue-primary-btn" />
+        </apex:outputPanel>
+    </apex:form>
+</apex:component>

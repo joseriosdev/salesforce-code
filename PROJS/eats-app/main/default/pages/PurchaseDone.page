@@ -1,0 +1,19 @@
+<apex:page lightningStylesheets="true" docType="html-5.0" sidebar="false">
+    <apex:stylesheet value="{!$Resource.customStylesheet}"/>
+    <div style="display:flex;flex-direction:column;width:100%;height:70vh;justify-content:flex-start;align-items:center">
+        <apex:image alt="thank you for your purchase"
+                    url="https://indyme.com/wp-content/uploads/2020/11/shopping-cart-icon.png"
+                    width="250"
+                    style="display:block;margin-bottom:1rem"/>
+        <div style="margin-bottom:1.5rem;font-size:.9rem;text-align:center">
+            <h1>All Done!</h1><br/>
+            <h2>Thank you for your purchase!</h2>
+        </div>
+        
+        <apex:form >
+            <apex:outputLink value="/apex/CompradorFiltroRestaurantes?sfdc.tabName=01r5f0000000ckK" styleClass="blue-primary-btn" >
+            	Got It!
+            </apex:outputLink>
+        </apex:form>
+    </div>
+</apex:page>

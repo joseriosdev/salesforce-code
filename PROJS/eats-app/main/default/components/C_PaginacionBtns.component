@@ -1,0 +1,45 @@
+<apex:component >
+    <apex:attribute type="ApexPages.Action" name="prevAll" description="Previous to first page" />
+    <apex:attribute type="ApexPages.Action" name="nextAll" description="Next to last page" />
+    <apex:attribute type="ApexPages.Action" name="prev" description="Previous page" />
+    <apex:attribute type="ApexPages.Action" name="next" description="Next page" />
+    <apex:attribute type="integer" name="currentPag" description="Number to display current page" />
+    <apex:attribute type="integer" name="endPag" description="Number to display last page" />
+    
+    <style>
+    	.pagination-btns-container {
+        	width: 25%;
+        	margin-bottom: 1.2rem;
+        }
+        
+        .pagination-btns-container .form {
+        	width: 100%;
+        	display: flex;
+        	justify-content: space-evenly;
+        	align-items: center;
+        }
+        
+        .pagination-btns-container .form .btn-wrapper {
+        	font-weight: bold !important;
+        }
+    </style>
+    
+    
+    <div class="pagination-btns-container">
+        <apex:form styleClass="form">
+        	<div class="btn-wrapper">
+                <apex:commandButton value=" |< " action="{!prevAll}" styleClass="red-btn" />
+            </div>
+            <div class="btn-wrapper">
+                <apex:commandButton value=" < " action="{!prev}" styleClass="red-btn" />
+                <apex:commandButton value=" > " action="{!next}" styleClass="red-btn" />
+            </div>
+            <div class="btn-wrapper">
+                <apex:commandButton value=" >| " action="{!nextAll}" styleClass="red-btn" />
+            </div>
+            <div class="btn-wrapper">
+                Pag. {!currentPag} - {!endPag}
+            </div>
+        </apex:form>
+    </div>
+</apex:component>

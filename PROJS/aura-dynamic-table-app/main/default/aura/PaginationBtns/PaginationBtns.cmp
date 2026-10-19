@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes"
+                access="global">
+    <aura:attribute name="paginationFirstPage" type="Integer" required="true" />
+    <aura:attribute name="paginationLastPage" type="Integer" required="true" />
+    <aura:attribute name="queryOffset" type="Integer" required="true" />
+    <aura:attribute name="queryLimit" type="Integer" required="true" />
+    
+    <aura:registerEvent name="updatePagination" type="c:PaginationEvt"/>
+    
+    <div style="display:flex;
+                align-items: center">
+        <lightning:button onclick="{!c.prev}" label="Prev" />
+        <p style="margin:0 .6rem">Pag {!v.paginationFirstPage} - {!v.paginationLastPage}</p>
+        <lightning:button onclick="{!c.next}" label="Next" />
+    </div>
+</aura:component>

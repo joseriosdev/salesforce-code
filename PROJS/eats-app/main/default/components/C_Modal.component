@@ -1,0 +1,44 @@
+<apex:component >
+    <style>
+    	.modal-background {
+            background-color: rgba(5,5,5, .5);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+        }
+        
+        .modal-form {
+        	width: 500px;
+        	padding: 11px;
+        	position: absolute;
+        	left: 50%;
+        	top: 15%;
+        	transform: translateX(-50%);
+            background-color: whitesmoke;
+            border: 2px #222 solid;
+        	border-radius: 6px;
+        	z-index: 9999;
+        }
+    </style>
+    
+    <apex:attribute type="boolean" name="display" description="Renders the modal" />
+    <apex:attribute type="ApexPages.Action" name="confirm" description="Confirm object to be deleted" />
+    <apex:attribute type="ApexPages.Action" name="cancel" description="Close Modal" />
+    <apex:attribute type="string" name="recordNameToDelete" description="The ID from the Restaurant" />
+    <apex:attribute type="string" name="otherRerender" description="The ID from the Restaurant" />
+    
+    
+    <apex:outputPanel id="modal">
+        <apex:outputPanel styleClass="modal-background" rendered="{!display}">
+            <apex:outputPanel styleClass="modal-form" layout="block" >
+                <h1><apex:outputText value="{!$Label.confirmarEliminacion}"/></h1>
+                <br/><br/><br/>{!recordNameToDelete}<br/><br/><br/>
+                <apex:commandButton value="{!$Label.cancelar}" action="{!cancel}" reRender="modal" styleClass="red-btn" />
+                <apex:commandButton value="{!$Label.confirmar}" action="{!confirm}" reRender="modal,{!otherRerender}" styleClass="dark-blue-btn" />
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:outputPanel>
+</apex:component>

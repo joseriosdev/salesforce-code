@@ -1,0 +1,28 @@
+<apex:component controller="RestauranteFormController" allowDML="true">
+    <apex:stylesheet value="{!$Resource.customStylesheet}"/>
+    
+    <apex:form >
+    	<apex:panelGrid columns="2" width="100%">
+      		<apex:pageBlock >
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!CreateRestaurante}" value="{!createOrEdit}" styleClass="dark-blue-btn" />
+                    <apex:outputLink value="{!cancelLink}" styleClass="dark-blue-btn">{!$Label.cancelar}</apex:outputLink>
+                </apex:pageBlockButtons>
+                <apex:pageBlockSection >
+                    <apex:inputField label="Nombre" value="{!newRest.Name}" required="true" styleClass="rounded-input" />
+                    <apex:inputField label="{!$Label.direccion}" value="{!newRest.Direccion__c}" required="true" styleClass="larger-rounded-input"/>
+                    <apex:inputField label="{!$Label.descripcion}" value="{!newRest.Descripcion__c}" styleClass="larger-rounded-input"/>
+                    <apex:inputField label="{!$Label.telefono}" value="{!newRest.Telefono__c}" styleClass="rounded-input"/>
+                    <apex:inputField label="{!$Label.latitud}" value="{!newRest.Coordenadas__Latitude__s}" required="true" styleClass="rounded-input"/>
+                    <apex:inputField label="{!$Label.longitud}" value="{!newRest.Coordenadas__Longitude__s}" required="true" />
+                     	<apex:selectCheckboxes label="{!$Label.categoria}" value="{!types}">
+            				<apex:selectOptions value="{!items}"/>
+        				</apex:selectCheckboxes><br/>
+                    <apex:inputField style="width: 150px;height: 40px;" label="{!$Label.imagen}" value="{!newRest.Picture__c}" />
+                
+                </apex:pageBlockSection>
+            	
+        	</apex:pageBlock>
+    	</apex:panelGrid>
+    </apex:form>
+</apex:component>

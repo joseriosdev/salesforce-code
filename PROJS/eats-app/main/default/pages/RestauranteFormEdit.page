@@ -1,0 +1,6 @@
+<apex:page docType="html-5.0" lightningStylesheets="true">
+    
+    <h1>Edit Restaurante </h1>
+    <c:RestauranteFormComponent />
+	    
+</apex:page>

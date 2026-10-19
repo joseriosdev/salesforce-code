@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="This event updates 3 values, the queryOffset and pagination UI numbers">
+    <aura:attribute name="queryOffset" type="Integer"/>
+    <aura:attribute name="paginationFirstPage" type="Integer"/>
+    <aura:attribute name="paginationLastPage" type="Integer"/>
+</aura:event>

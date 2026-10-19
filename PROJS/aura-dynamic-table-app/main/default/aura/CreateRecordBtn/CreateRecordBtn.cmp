@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+	<aura:attribute name="sObject" type="String" default="Account" required="true" />
+    
+    <lightning:button onclick="{!c.createNewRecord}"
+                      label="New"
+                      variant="brand"/>
+</aura:component>

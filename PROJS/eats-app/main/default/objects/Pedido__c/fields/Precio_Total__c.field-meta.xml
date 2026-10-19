@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Precio_Total__c</fullName>
+    <externalId>false</externalId>
+    <label>Precio Total</label>
+    <summarizedField>Orden__c.Subtotal_final__c</summarizedField>
+    <summaryForeignKey>Orden__c.Pedido__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

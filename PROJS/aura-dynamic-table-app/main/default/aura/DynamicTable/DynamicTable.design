@@ -1,0 +1,8 @@
+<design:component>
+	<design:attribute name="tableTitle" label="Table Title" description="The title of the dynamic table" />
+    <design:attribute name="tableIcon" label="Icon" datasource="einstein,favorite,fallback,setup_assistant_guide,animal_and_nature,anchor" />
+    <design:attribute name="customSObject" label="sObject Type" datasource="apex://SObjectsList" default="Account" description="API name of the sObject" />
+    <design:attribute name="sobjectFields" label="Fields to Select" default="Id,Name" description="CSV API name of the sObject fields separated by comma" />
+    <design:attribute name="sobjectFieldsLabel" label="Cols Labels" default="Id,Name" description="CSV Label to display in table, must be same order as previous input field" />
+    <design:attribute name="tableLimit" label="Limit of Rows" min="1" max="10" description="NUMBER. How many rows do you want to see in the table?" />	
+</design:component>

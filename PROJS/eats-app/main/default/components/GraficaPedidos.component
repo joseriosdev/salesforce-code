@@ -1,0 +1,20 @@
+<apex:component controller="GraficaPedidosController" >
+    
+    <apex:pageBlock title="{!$Label.Ordered_Dishes}" >
+        <apex:pageBlockSection >
+            <apex:pageBlockSectionItem dataStyle="margin: auto;">
+                <apex:chart height="600" width="800" data="{!data}" id="chart">
+                    <apex:axis type="Numeric" position="left" fields="data1" title="{!$Label.Cantidad}"></apex:axis>
+                    <apex:axis type="Category" position="bottom" fields="name" title="{!$Label.Platos}"></apex:axis>
+                    <apex:barSeries axis="left" title="Cantidad de Platos" orientation="vertical" xField="name" yField="data1">
+                        
+                    </apex:barSeries>
+                    
+                </apex:chart>
+            </apex:pageBlockSectionItem>
+            
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+    
+</apex:component>

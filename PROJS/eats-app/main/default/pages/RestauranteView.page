@@ -1,0 +1,28 @@
+<apex:page controller="RestauranteViewController" sidebar="false" lightningStylesheets="true" docType="html-5.0">
+    <style>
+        .details-flex {
+        	width: 100%;
+        	display: flex;
+        	padding-left: 2rem;
+        }
+    	
+        .details-grid {
+        	width: 80%;
+        	display: grid;
+        	grid-gap: 1rem;
+        	grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .details-grid .d-title {
+        	grid-column: 1/3;
+        	font-size: 1.5rem;
+        	font-weight: bolder;
+        }
+        
+        .details-grid div img {
+        	max-width: 300px;
+        }
+    </style>
+    
+    <c:RestauranteDetails ></c:RestauranteDetails>
+</apex:page>

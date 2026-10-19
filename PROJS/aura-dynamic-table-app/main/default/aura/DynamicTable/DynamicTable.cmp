@@ -1,0 +1,94 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+                access="global"
+                controller="DynamicTableController">
+	<!-- Design attrs -->
+    <aura:attribute name="tableTitle" type="String" default="Object Info" />
+    <aura:attribute name="customSObject" type="String" default="Account" />
+    <aura:attribute name="sobjectFields" type="String" default="Id,Name" />
+    <aura:attribute name="sobjectFieldsLabel" type="String" default="Id,Name" />
+    <aura:attribute name="tableIcon" type="String" default="einstein" />
+    <aura:attribute name="tableLimit" type="Integer" default="5" />
+    <!-- /Design attrs -->
+    <!-- Pagination attrs -->
+    <aura:attribute name="queryOffset" type="Integer" default="0" />
+    <aura:attribute name="paginationFirstPage" type="Integer" default="1" />
+    <aura:attribute name="paginationLastPage" type="Integer" default="3" />
+    <!-- /Pagination attrs -->
+    
+    <aura:attribute name="tableData" type="Object" default="{Name: 'John Doe'}" />
+    <aura:attribute name="tableCols" type="Object" />
+    <aura:attribute name="isLoading" type="boolean" default="false" />
+    <aura:attribute name="displayModal" type="boolean" default="false" />
+    <aura:attribute name="recordToDeleteId" type="string" />
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler name="updatePagination" event="c:PaginationEvt" action="{!c.handleUpdatePagination}"/>
+    
+    
+    
+    <lightning:card class="slds-var-p-around_small" title="{!v.tableTitle}" iconName="{!'utility:'+v.tableIcon}" >
+        <div id="{!'alert-message'+v.customSObject}" class="alert">
+        </div>
+        
+        
+        <section>
+            <lightning:datatable aura:id="dynamicTable"
+                                 keyField="Id"
+                                 data="{!v.tableData}"
+                                 columns="{!v.tableCols}"
+                                 onsave="{!c.save}"
+                                 hideCheckboxColumn="true"
+                                 onrowaction="{!c.handleRowAction}"/>
+            <aura:if isTrue="{!v.isLoading}">
+                <lightning:spinner alternativeText="Loading"/>
+            </aura:if>
+        </section>   
+        
+        <footer style="margin-top: 1rem;
+                       display:flex;
+                       align-items: center;
+                       justify-content: space-between">
+            <c:PaginationBtns paginationFirstPage="{!v.paginationFirstPage}"
+                              paginationLastPage="{!v.paginationLastPage}"
+                              queryOffset="{!v.queryOffset}"
+                              queryLimit="{!v.tableLimit}"/>
+            <c:CreateRecordBtn sObject="{!v.customSObject}" />
+        </footer>
+    </lightning:card>
+    
+    
+    
+    <aura:if isTrue="{!v.displayModal}">
+        <section role="dialog"
+                 tabindex="-1"
+                 aria-labelledby="modal-heading-01"
+                 aria-modal="true"
+                 aria-describedby="modal-content-id-1"
+                 class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.toggleModalDelete}"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Are you sure you want to delete it?</h2>
+                </header>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer" style="display:flex;justify-content:center">
+                    <lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{! c.toggleModalDelete}"/>
+                    <lightning:button variant="brand"
+                                      label="Yes"
+                                      title="yes"
+                                      onclick="{!c.confirmDeleteRow}"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

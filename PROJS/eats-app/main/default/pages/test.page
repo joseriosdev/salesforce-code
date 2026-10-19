@@ -1,0 +1,76 @@
+<apex:page controller="testController" >   
+    <apex:repeat value="{!platos}" var="dish">
+                        <div class="card">
+                            <apex:outputField value="{!dish.Picture__c}" />
+                            <h3 class="dish-title">{!dish.Name}</h3>
+                            <div style="display:flex;justify-content:space-between;align-items:center;background-color:#ededed;border-radius:5px">
+                                <span class="dish-price">${!dish.Precio__c}</span>
+                                <span class="dish-type">{!dish.Tipo__c}</span>
+                            </div>
+                            <p>
+                                {!dish.Descripcion__c}
+                            </p>
+                        </div>
+                        <!--<c:C_MenuCardComprador dish="dish" />-->
+                    </apex:repeat>
+    <!--<apex:form >
+        <apex:commandButton value="Show Pop up" action="{!showPopup}" rerender="tstpopup"/>
+        <apex:pageBlock >
+            This is just filler text from the Salesforce General.
+        </apex:pageBlock>
+ 
+        <apex:outputPanel id="tstpopup">
+            <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+            
+            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                This is where I would put whatever information I needed to show to my end user.<br/><br/><br/>
+                <apex:commandButton value="Hide Pop up" action="{!closePopup}" rerender="tstpopup"/>
+            </apex:outputPanel>
+        </apex:outputPanel>
+ 
+    </apex:form>
+ 
+    <style type="text/css">
+        .custPopup{
+            background-color: white;
+            border-width: 2px;
+            border-style: solid;
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            width: 500px;
+            margin-left: -250px;
+            top:100px;
+        }
+        .popupBackground{
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+        }
+
+    </style>
+    
+    
+  <apex:form id="form">
+    <apex:pageBlock>
+      <apex:pageBlockTable value="{!AllLeads}" var="Lead">
+        <apex:column value="{!Lead.Name}"/>
+        <apex:column>
+          <apex:commandButton value="Delete" action="{!deleteRecord}" reRender="form">
+            <apex:param 
+              name="leadToDelete" 
+              value="{!Lead.Id}" 
+              assignTo="{!RecordToDelete}"/>
+          </apex:commandButton>
+        </apex:column>
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+  </apex:form>-->
+</apex:page>

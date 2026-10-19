@@ -1,0 +1,22 @@
+.THIS {
+}
+
+.THIS .alert {
+    display: none;
+    width: 50%;
+    padding: .3rem;
+    margin: 0 auto .3rem;
+    text-align: center;
+    color: snow;
+    border-radius: 6px;
+}
+
+.THIS .error {
+    display: block;
+    background-color: firebrick;
+}
+
+.THIS .success {
+    display: block;
+    background-color: #2e844a;
+}

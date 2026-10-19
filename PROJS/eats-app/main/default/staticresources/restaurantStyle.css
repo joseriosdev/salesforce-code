@@ -1,0 +1,124 @@
+.details-flex {
+	width: 100%;
+	display: flex;
+	padding-left: 2rem;
+}
+
+.details-grid {
+	width: 85%;
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.details-grid .d-title {
+	grid-column: 1/3;
+	font-size: 1.5rem;
+	font-weight: bolder;
+}
+
+.details-grid div img {
+	display: block !important;
+	width: 500px !important;
+	height: 250px !important;
+	object-fit: cover !important;
+}
+
+.malla {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1.8rem 4rem;
+	padding: 1rem;
+}
+
+.detalles, .descripcion {
+    width: 85%;
+    padding: 1.2rem 1.5rem;
+    border: solid 1px lightgray;
+    border-radius: 6px;
+    background-color: #e5e5e5;
+    box-shadow: 2px 2px 4px rgba(0,0,0,.1), -2px -2px 4px rgba(0,0,0,.1);
+    font-size: .8rem;
+}.detalles strong {
+    background-color: orange;
+    padding: .2rem;
+    border-radius: 4px;
+    color: snow;
+}
+
+.descripcion h3 {
+    font-size: 1.1rem;
+    font-family: monospace;
+    color: snow;
+    background-color: #444459;
+    text-align: center;
+    padding: .5rem;
+    width: 100%;
+    display: block;
+    margin-bottom: .6rem;
+}
+
+.card {
+	min-height: 200px;
+	padding: .9rem;
+    padding-bottom: 2rem;
+	background-color: #f5f6f9;
+	border: solid gray 1px;
+    position: relative;
+	border-radius: 6px;
+	box-shadow: 5px 5px 10px rgba(5,5,5,.1), -5px -5px 10px rgba(5,5,5,.1);
+}.card table img {
+	display: block !important;
+	margin: 0 auto !important;
+	width: 300px !important;
+	height: 150px !important;
+	object-fit: cover !important;
+}
+
+.dish-title {
+    display: block;
+    width: 100%;
+    padding: .5rem .3rem;
+    margin-bottom: 1rem;
+    font-family: monospace;
+    font-size: 1rem;
+    color: snow;
+    background-color: steelblue;
+}
+
+.dish-price {
+    display: inline-block;
+    padding: .4rem;
+    font-size: .9rem;
+    font-weight: bold;
+    color: snow;
+    background-color: crimson;
+    border-radius: 5px;
+}
+
+.dish-details {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ededed;
+    border-radius: 5px;
+}
+
+.btn-set {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translatex(-50%);
+}.btn-set div {
+    width: 40%;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

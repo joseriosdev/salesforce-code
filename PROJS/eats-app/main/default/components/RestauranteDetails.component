@@ -1,0 +1,46 @@
+<apex:component controller="RestauranteViewController" >
+    <apex:attribute type="boolean" name="displayDishBtn" description="Render or not the '+Dish' btn" default="true" />
+    <apex:attribute type="boolean" name="displayEditBtn" description="Render or not the 'Edit' btn" default="true" />
+    
+    <apex:stylesheet value="{!$Resource.restaurantStyle}"/>
+    <apex:stylesheet value="{!$Resource.customStylesheet}"/>
+    
+    <apex:outputPanel styleClass="details-flex">
+                <apex:outputPanel styleClass="details-grid">
+                    <div class="d-title">
+                    	<apex:outputField value="{!Restaurante.Name}"/>
+                    </div>
+                    <div>
+                    	<apex:outputField value="{!Restaurante.Picture__c}"/> 
+                    </div>
+                    <div class="detalles">
+                        <strong>{!$Label.restaurante}</strong><br/> <p><apex:outputField value=" {!Restaurante.Name}"/></p>
+                        <strong>{!$Label.tipo}</strong><br/> <p><apex:outputField value=" {!Restaurante.Tipo__c}"/></p>
+                        <strong>{!$Label.direccion}</strong><br/> <p><apex:outputField value=" {!Restaurante.Direccion__c}"/></p>
+                        <strong>{!$Label.telefono}</strong><br/> <p><apex:outputField value=" {!Restaurante.Telefono__c}"/></p>
+                    </div>
+                    <div>
+                    	<iframe
+                            width="500"
+                            height="250"
+                            style="border:0"
+                            loading="lazy"
+                            
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAxGeoHEkoFyeyUnskesFsX4g6sbGVCJIc&q={!coordinates}">
+                        </iframe>    
+                    </div>
+                    <div class="descripcion">
+                        <h3>{!$Label.descripcion}</h3>
+                        <p>
+                            <apex:outputField value="{!Restaurante.Descripcion__c}"/> 
+                        </p>
+                    </div>
+                </apex:outputPanel>
+                <apex:outputPanel >
+                	<apex:form >
+                        <apex:commandButton action="/apex/PlatoForm?restID={!restID}" value="+ {!$Label.plato}" styleClass="blue-primary-btn" rendered="{!displayDishBtn}" />
+                        <apex:commandButton action="/apex/RestauranteFormEdit?restID={!restID}" value="{!$Label.editar}" styleClass="blue-primary-btn" rendered="{!displayEditBtn}" />
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:outputPanel>
+</apex:component>

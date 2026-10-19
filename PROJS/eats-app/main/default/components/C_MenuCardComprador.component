@@ -1,0 +1,40 @@
+<apex:component controller="C_MenuCardCompradorController" >
+    <!-- C_MenuCardComprador -->
+    <style>
+    	.card {
+            min-height: 100px;
+            padding: .9rem;
+            background-color: #f5f6f9;
+            border: solid gray 1px;
+            border-radius: 6px;
+            box-shadow: 5px 5px 10px rgba(5,5,5,.1), -5px -5px 10px rgba(5,5,5,.1);
+        }.card table img {
+        	display: block !important;
+        	margin: 0 auto !important;
+        	width: 300px !important;
+        	height: 150px !important;
+        	object-fit: cover !important;
+        }
+    </style>
+    
+    <apex:attribute type="Plato__c" name="dish" assignTo="{!currentDish}" description="A dish to populate the card data" required="true" />
+    
+    <div class="card">
+        <apex:outputText value="{!dish.Picture__c}" />
+        <h3 class="dish-title">{!dish.Name}</h3>
+        <div style="display:flex;justify-content:space-between;align-items:center;background-color:#ededed;border-radius:5px">
+            <span class="dish-price">${!dish.Precio__c}</span>
+            <span class="dish-type">{!dish.Tipo__c}</span>
+        </div>
+        <p>
+            {!dish.Descripcion__c}
+        </p>
+        <div class="btn-set">
+            <div>
+                <apex:commandButton value="-" action="{!decrease}" />
+                <apex:outputText value="{!units}" />
+                <apex:commandButton value="+" action="{!increase}" />
+            </div>
+        </div>
+    </div>
+</apex:component>

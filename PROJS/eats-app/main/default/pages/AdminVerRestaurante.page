@@ -1,0 +1,6 @@
+<apex:page sidebar="false" lightningStylesheets="true" docType="html-5.0" title="{!$Label.restaurante} {$Label.detalles}">
+    <apex:stylesheet value="{!$Resource.restaurantStyle}"/>
+    <apex:stylesheet value="{!$Resource.customStylesheet}"/>
+    <h1>{!$Label.nuevoRestaurante}</h1>
+    <c:RestauranteDetails displayDishBtn="false" />
+</apex:page>

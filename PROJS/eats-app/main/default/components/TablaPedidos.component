@@ -1,0 +1,17 @@
+<apex:component controller="TablaPedidosController" >
+    <apex:pageBlock title="{!$Label.Monthly_Orders}" >
+        <apex:pageBlockTable title="Pedidos del mes" value="{!pedidosList}" var="pedido">
+            <apex:column headerValue="Numero de Pedido" value="{!pedido.Name}"/>
+            <apex:column headerValue="Cliente" value="{!pedido.Nombre_Factura__c}"/>
+            <apex:column headerValue="Fecha" value="{!pedido.Fecha__c}"/>
+            <apex:column headerValue="Direccion" value="{!pedido.Direccion__c}"/>
+            <apex:column headerValue="Total" value="{!pedido.Precio_Total__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    
+    <apex:pageBlock >
+        <apex:outputPanel style="font-size: 25px;">
+        	<apex:outputText >TOTAL: ${!Total}</apex:outputText>
+        </apex:outputPanel>
+    </apex:pageBlock>
+</apex:component>

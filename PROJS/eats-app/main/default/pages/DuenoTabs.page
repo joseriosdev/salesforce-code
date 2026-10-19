@@ -1,0 +1,36 @@
+<apex:page controller="DuenoTabsController" sidebar="false" lightningStylesheets="true" docType="html-5.0">
+    <apex:stylesheet value="{!$Resource.customStylesheet}"/>
+    <apex:stylesheet value="{!$Resource.restaurantStyle}"/>
+    
+    <apex:tabPanel activeTabClass="active-tab" tabClass="inactive-tab">
+        <!-- DETAILS TAB -->
+    	<apex:tab label="{!$Label.detalles}">
+            <c:RestauranteDetails />
+        </apex:tab>
+        <!-- /DETAILS TAB -->
+        
+        <!-- MENU TAB -->
+        <apex:tab label="{!$Label.menu}">
+        	<c:C_BuscadorConTipo inputWords="{!inputDishName}"
+                                 type="{!dishType}"
+                                 typesList="{!inputTypes}"
+                                 search="{!searchDishes}"
+                                 autoDisplay="true"
+                                 auxBtnAction="/apex/PlatoForm?restID={!restID}"
+                                 auxBtnValue="{!$Label.crear}"
+                                 auxBtnDisplay="true"/>
+            <c:Menu />
+        </apex:tab>
+        <!-- /MENU TAB -->
+
+        
+        <!-- ORDERS TAB -->
+        <apex:tab label="{!$Label.pedidos}">
+            
+            <c:GraficaPedidos ></c:GraficaPedidos>
+            <c:TablaPedidos ></c:TablaPedidos>
+        	
+        </apex:tab>
+        <!-- /ORDERS TAB -->
+    </apex:tabPanel>
+</apex:page>

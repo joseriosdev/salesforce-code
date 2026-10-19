@@ -1,0 +1,41 @@
+<apex:page controller="CompradorFiltroRestaurantesController" sidebar="false" lightningStylesheets="true" docType="html-5.0">
+    <style>
+    .restaurant-img img {
+        width: 100% !important;
+        height: 100px !important;
+        object-fit: contain !important;
+        }
+    </style>
+    
+    <apex:stylesheet value="{!$Resource.restaurantStyle}"/>
+    <apex:stylesheet value="{!$Resource.customStylesheet}"/>
+    
+    <apex:pageBlock title="{!$Label.tituloFiltroRestaurantes}">        
+        <c:C_BuscadorConTipo inputWords="{!inputRestaurantName}"
+                             type="{!inputType}"
+                             typesList="{!inputTypes}"
+                             search="{!searchRestaurants}"
+                             autoDisplay="true"
+                             auxBtnDisplay="false"/>
+        <c:C_PaginacionBtns currentPag="{!currentPag}" endPag="{!endPag}"
+                            prev="{!previous}" next="{!next}"
+                            prevAll="{!previousAll}" nextAll="{!nextAll}"/>
+        
+        <!-- RESULTS TABLE -->
+        <apex:outputPanel >
+            <apex:form >
+                <apex:pageBlockTable value="{!restaurantsList}" var="restaurant" id="restaurantTable" columnsWidth="30%,20%,20%,15%,15%">
+                    
+                    <apex:column headerValue="{!$Label.imagen}" value="{!restaurant.Picture__c}" styleClass="restaurant-img"/>
+                    <apex:column headerValue="{!$Label.restaurante}">
+                    	<apex:outputLink value="/apex/CompradorMenu?restId={!restaurant.Id}">{!restaurant.Name}</apex:outputLink>
+                    </apex:column>
+                    <apex:column headerValue="{!$Label.direccion}" value="{!restaurant.Direccion__c}"/>
+                    <apex:column headerValue="{!$Label.telefono}" value="{!restaurant.Telefono__c}"/>
+                    <apex:column headerValue="{!$Label.tipo}" value="{!restaurant.Tipo__c}"/>
+                </apex:pageBlockTable>
+            </apex:form>
+        </apex:outputPanel>
+        <!-- /RESULTS TABLE -->
+    </apex:pageBlock>
+</apex:page>

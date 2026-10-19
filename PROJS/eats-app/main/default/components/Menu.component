@@ -1,0 +1,47 @@
+<apex:component controller="DuenoTabsController"  allowDML="true">
+    <apex:form id="cardList">
+        <div class="malla">
+            <apex:repeat value="{!defaultDishList}" var="dish">
+                <div class="card">
+                    <apex:outputField value="{!dish.Picture__c}" styleClass="img-card"/>
+                    <h3 class="dish-title">{!dish.Name}</h3>
+                    <div class="dish-details">
+                        <span class="dish-price">{!dish.Precio__c}</span>
+                        <apex:outputField value="{!dish.Disponibilidad__c}"/>
+                        <span class="dish-type">{!dish.Tipo__c}</span>
+                    </div>
+                        
+                    <p>
+                        {!dish.Descripcion__c}
+                    </p>
+                    <div class="btn-set">
+                        <div>
+                            <apex:commandButton value="{!$Label.editar}"
+                                                action="/apex/PlatoForm?restID={!restID}&platoID={!selectDishId}"
+                                                reRender="dummy"
+                                                styleClass="blue-btn" >
+                                <apex:param name="edit-dish-name"
+                                            value="{!dish.Id}"
+                                            assignTo="{!selectDishId}"/>
+                            </apex:commandButton>
+                            <apex:commandButton value="{!$Label.eliminar}" action="{!toggleModal}" reRender="cardList" styleClass="blue-btn">
+                                <apex:param name="delete-dish-id"
+                                            value="{!dish.Id}"
+                                            />
+                                <apex:param name="delete-dish-name"
+                                            value="{!dish.Name}"
+                                            assignTo="{!deleteDishName}"/>
+                            </apex:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </apex:repeat>
+        </div>
+                
+        <!-- MODAL -->
+        <c:C_Modal display="{!displayModal}" confirm="{!deleteDish}"
+                    cancel="{!toggleModal}" otherRerender="cardList"
+                    recordNameToDelete="{!deleteDishName}"/>
+        <!-- /MODAL -->
+    </apex:form>
+</apex:component>

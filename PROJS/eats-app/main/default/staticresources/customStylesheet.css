@@ -1,0 +1,90 @@
+.blue-btn {
+	height: 24px !important;
+	padding: .3rem .5rem !important;
+	font-size: .8rem !important;
+	background-image: none !important;
+	background-color: #099ad6 !important;
+	border: solid 1px #1380a0 !important;
+    text-decoration: none !important;
+	border-radius: 4px !important;
+	color: snow !important;
+}.blue-btn:hover {
+	box-shadow: 2px 2px 2px rgba(0,0,0, .2) !important;
+	cursor: pointer !important;
+}
+
+.blue-primary-btn {
+	height: 28px !important;
+	padding: .4rem .6rem !important;
+	font-size: .9rem !important;
+	background-image: none !important;
+	background-color: #0275d8 !important;
+	border: solid 1px #1380a0 !important;
+    text-decoration: none !important;
+	border-radius: 4px !important;
+	color: snow !important;
+}.blue-primary-btn:hover {
+	box-shadow: 2px 2px 2px rgba(0,0,0, .2) !important;
+	cursor: pointer !important;
+}
+
+.red-btn {
+	height: 22px !important;
+	padding: .3rem .5rem !important;
+	font-size: .7rem !important;
+	background-image: none !important;
+	background-color: crimson !important;
+	border: solid 1px firebrick !important;
+	border-radius: 4px !important;
+    text-decoration: none !important;
+	color: snow !important;
+}.red-btn:hover {
+	box-shadow: 2px 2px 2px rgba(0,0,0, .2) !important;
+	cursor: pointer !important;
+}
+
+.dark-blue-btn {
+	height: 24px !important;
+	padding: .3rem .5rem !important;
+	font-size: .75rem !important;
+	background-image: none !important;
+    text-decoration: none !important;
+	background-color: #16325c !important;
+	border: solid 1px #102245 !important;
+	border-radius: 4px !important;
+	color: snow !important;
+}.dark-blue-btn:hover {
+	box-shadow: 2px 2px 2px rgba(0,0,0, .2) !important;
+	cursor: pointer !important;
+}
+
+.rounded-input, .larger-rounded-input {
+	padding-left: 1rem !important;
+	height: 20px !important;
+	border-radius: 1rem !important;
+	border: solid 2px #ccc !important;
+	outline: none !important;
+	font-size: .8rem !important;
+}.rounded-input:focus, .larger-rounded-input:focus {
+	border: solid 2px silver !important;
+}
+
+.larger-rounded-input {
+    min-height: 90px !important;
+}
+
+.inactive-tab {
+    background-image: none;
+    background-color: #16325c;
+    color: snow !important;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.active-tab {
+    background-image: none;
+    background-color: #099ad6;
+    color: snow !important;
+    font-size: 1.1rem;
+    cursor: pointer;
+}

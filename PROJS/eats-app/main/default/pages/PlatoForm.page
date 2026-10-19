@@ -1,0 +1,4 @@
+<apex:page controller="PlatoFormController" docType="html-5.0" lightningStylesheets="true" >
+    <h1>Nuevo Plato</h1>
+    <c:PlatoFormComponent ></c:PlatoFormComponent>
+</apex:page>

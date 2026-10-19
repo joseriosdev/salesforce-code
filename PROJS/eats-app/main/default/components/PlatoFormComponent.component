@@ -1,0 +1,37 @@
+<apex:component controller="PlatoFormController" allowDML="true" >
+    <apex:stylesheet value="{!$Resource.customStylesheet}"/>
+    
+    <apex:form >
+    	<apex:panelGrid columns="2" width="100%">
+      		<apex:pageBlock >
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!CreatePlato}" value="{!$Label.crear}" styleClass="dark-blue-btn" />
+                    <apex:outputLink value="/apex/DuenoTabs?restId={!restID}" styleClass="dark-blue-btn">{!$Label.cancelar}</apex:outputLink>
+                </apex:pageBlockButtons>
+                <apex:pageBlockSection >
+                    
+                    <!--<apex:inputText label="Nombre" value="{!platoNombre}"> </apex:inputText> 
+                        <apex:inputText label="Precio" value="{!platoPrecio}"> </apex:inputText> 
+                        <apex:inputText label="Descripcion" value="{!platoDesc}"> </apex:inputText>-->
+                    	
+                    	<apex:inputField label="Nombre" value="{!newPlato.Name}" required="true" styleClass="rounded-input" />
+                    	<apex:inputField label="Precio" value="{!newPlato.Precio__c}" required="true" styleClass="rounded-input" />
+                    	<apex:inputField label="Descripcion" value="{!newPlato.Descripcion__c}" styleClass="larger-rounded-input" />
+                    
+                     	<apex:inputCheckbox value="{!platoDisp}" label="Disponibilidad"/>
+                    	
+                     	<apex:selectCheckboxes label="Categoría" value="{!types}">
+            				<apex:selectOptions value="{!items}"/>
+        				</apex:selectCheckboxes><br/>
+                    	<apex:inputField style="width: 150px;height: 40px;" label="Image" value="{!newPlato.Picture__c}"/>
+                	
+                </apex:pageBlockSection>
+            	
+        	</apex:pageBlock>
+        
+    	</apex:panelGrid>
+        <!--<apex:commandButton action="{!CreatePlato}" value="Crear"/>
+        <apex:commandButton action="/apex/RestauranteView?restId={!restID}" value="Cancelar"/>
+       	<apex:outputLink value="/apex/RestauranteView?restId={!restID}">Cancelar</apex:outputLink>-->
+    </apex:form>
+</apex:component>

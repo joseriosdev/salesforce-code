@@ -1,0 +1,78 @@
+<apex:component controller="CompradorMenuController" allowDML="true" >
+    <c:C_BuscadorConTipo autoDisplay="{!displayMenu}"
+                                 inputWords="{!inputDishName}"
+                                 search="{!searchDishes}"
+                                 auxBtnDisplay="true" auxBtnValue="Submit Order" auxBtnAction="{!navigateNextComponent}" />
+    
+    <apex:form rendered="{!displayMenu}">
+        <div class="malla">
+            <apex:repeat value="{!uiDishesInfo}" var="dish">
+                <div class="card">
+                    <apex:outputField value="{!dish.dish.Picture__c}" />
+                    <h3 class="dish-title">{!dish.dish.Name}</h3>
+                    <div style="dish-details">
+                        <span class="dish-price">${!dish.dish.Precio__c}</span>
+                        <span class="dish-type">{!dish.dish.Tipo__c}</span>
+                    </div>
+                    <p>
+                        {!dish.dish.Descripcion__c}
+                    </p>
+                    <div class="btn-set">
+                        <div>
+                            <apex:commandButton value="-" action="{!dish.decrease}" styleClass="dark-blue-btn" />
+                            <apex:outputText value="{!dish.units}" />
+                            <apex:commandButton value="+" action="{!dish.increase}" styleClass="dark-blue-btn" />
+                        </div>
+                    </div>
+                </div>
+            </apex:repeat>
+        </div>
+    </apex:form>
+    
+    <apex:pageBlock rendered="{!displayOrder}" title="Confirm your order">
+        <div width="100%" style="display:flex;justify-content:space-between">
+            <div width="45%">
+                <apex:dataTable value="{!orderTableInfo}" var="orderDish" style="font-size:1rem" width="100%" border="1" bgcolor="#eef" columnsWidth="100px,100px,100px,100px">
+                    <apex:column headerValue="Dish" value="{!orderDish.dish.Name}" />
+                    <apex:column headerValue="Quantity" value="{!orderDish.units}" />
+                    <apex:column headerValue="Unit Price" value="{!orderDish.dish.Precio__c}" />
+                    <apex:column headerValue="Price" value="${!orderDish.total}" />
+                </apex:dataTable>
+                <div style="background:orange;width:120px;height:50px;color:snow;font-size:1.3rem;margin-top:3rem;text-align:center;padding-top:25px">
+                    ${!self.grantTotal}
+                </div>
+            </div>
+            
+            <div width="45%" style="margin:0 auto">
+                <apex:form style="padding:1rem;border:solid 1px gray;display:flex;flex-direction:column;height:300px;justify-content:space-between;align-items:center">
+                    <div>
+                        <apex:outputText value="Full Name" /><br/>
+                        <apex:inputText value="{!fullName}" styleClass="rounded-input" />
+                    </div>
+                    
+                    <div>
+                        <apex:outputText value="NIT" /><br/>
+                        <apex:inputText value="{!nit}" styleClass="rounded-input" />
+                    </div>
+                    
+                    <div>
+                        <apex:outputText value="Address" /><br/>
+                        <apex:inputText value="{!address}" styleClass="rounded-input" />
+                    </div>
+                    
+                    <div>
+                        <apex:outputText value="Payment Method" /><br/>
+                        <apex:selectList value="{!paymentMethod}" size="1" styleClass="rounded-input">
+                            <apex:selectOptions value="{!paymentMethodList}" />
+                        </apex:selectList>
+                    </div>
+
+                    <div>
+                        <apex:commandButton value="{!$Label.confirmar}" action="{!submitOrder}" styleClass="blue-primary-btn" />
+                        <apex:commandButton value="Cancel" action="{!navigateNextComponent}" styleClass="red-btn" />
+                    </div>
+                </apex:form>
+            </div>
+        </div>
+    </apex:pageBlock>
+</apex:component>
